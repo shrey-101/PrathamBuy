@@ -1,6 +1,6 @@
 import { Counter } from "./features/counter/Counter";
 import "./App.css";
-import ProductList from "./features/products/productComponents/ProductList";
+import ProductList from "./features/product/productComponents/ProductList";
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";

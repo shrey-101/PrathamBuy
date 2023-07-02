@@ -1,6 +1,5 @@
 import NavBar from "../features/navbar/Navbar";
-import ProductDetail from "../features/products/productComponents/ProductDetail";
-
+import ProductDetail from "../features/product/productComponents/ProductDetail";
 function ProductDetailPage() {
   return (
     <div>
@@ -10,5 +9,4 @@ function ProductDetailPage() {
     </div>
   );
 }
-
 export default ProductDetailPage;
