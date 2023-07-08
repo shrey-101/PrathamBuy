@@ -1,4 +1,4 @@
-import Cart from "../features/shopping-cart/Cart";
+import Cart from "../features/cart/Cart";
 function CartPage() {
   return (
     <div>
