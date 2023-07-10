@@ -2351,11 +2351,11 @@
         {
           "name": "Abhishek R",
           "email": "test@gmail.com",
-          "phone": "1234567788",
-          "street": "11th Main",
           "city": "Banaglore",
           "state": "Karnataka",
-          "pinCode": "560034"
+          "pinCode": "560034",
+          "phone": "1234567788",
+          "street": "11th Main"
         }
       ],
       "id": 1
