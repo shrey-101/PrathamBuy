@@ -23,6 +23,9 @@ import PageNotFound from "./pages/404";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
 import UserOrders from "./features/user/components/UserOrders";
 import UserOrdersPage from "./pages/UserOrdersPage";
+import UserProfile from "./features/user/components/UserProfile";
+import UserProfilePage from "./pages/UserProfilePage";
+import { fetchLoggedInUserAsync } from "./features/user/userSlice";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -70,10 +73,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/orders",
-    element: (
-      <UserOrdersPage></UserOrdersPage>
-      // we will add Page later right now using component directly.
-    ),
+    element: <UserOrdersPage></UserOrdersPage>,
+  },
+  {
+    path: "/profile",
+    element: <UserProfilePage></UserProfilePage>,
   },
   {
     path: "*",
@@ -90,6 +94,7 @@ function App() {
     if (user) {
       //This checks if the user object exists or is truthy.
       dispatch(fetchItemsByUserIdAsync(user.id)); //If the user object exists, the code dispatches an action called fetchItemsByUserIdAsync with the user.id as an argument. This action is likely defined elsewhere and is responsible for fetching items associated with the logged-in user.
+      dispatch(fetchLoggedInUserAsync(user.id));
     }
   }, [dispatch, user]); // The dependencies array [dispatch, user] is provided to the useEffect hook, which means the effect will only re-run if either the dispatch function or the user object changes.
 
