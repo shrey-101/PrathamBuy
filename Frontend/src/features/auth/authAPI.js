@@ -24,11 +24,10 @@ export function checkUser(loginInfo) {
         resolve({ data });
       } else {
         const error = await response.json();
-        reject({ error });
+        reject(error);
       }
-      console.log({ data });
     } catch (error) {
-      reject({ error });
+      reject(error);
     }
 
     // TODO: on server it will only return some info of user (not password)

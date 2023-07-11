@@ -2401,6 +2401,11 @@
       "addresses": [],
       "role": "admin",
       "id": 3
+    },
+    {
+      "email": "test@gmail.com",
+      "password": "Qwerty123",
+      "id": 4
     }
   ],
   "cart": [
@@ -2425,6 +2430,11 @@
       "quantity": 1,
       "user": 1,
       "id": 1
+    },
+    {
+      "product": 4,
+      "quantity": 1,
+      "id": 2
     }
   ],
   "orders": [
