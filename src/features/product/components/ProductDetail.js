@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { addToCartAsync, selectItems } from "../../cart/cartSlice";
 import { selectLoggedInUser } from "../../auth/authSlice";
 import { discountedPrice } from "../../../app/constants";
+import { useAlert } from "react-alert";
 
 // TODO: In server data we will add colors, sizes , highlights. to each product
 
@@ -47,7 +48,7 @@ export default function ProductDetail() {
   const dispatch = useDispatch();
   const params = useParams();
   const items = useSelector(selectItems);
-
+  const alert = useAlert();
   const handleCart = (e) => {
     e.preventDefault();
     if (items.findIndex((item) => item.productId === product.id) < 0) {
@@ -59,8 +60,9 @@ export default function ProductDetail() {
       };
       delete newItem["id"];
       dispatch(addToCartAsync(newItem));
+      alert.info("Item added to cart");
     } else {
-      console.log("already added");
+      alert.info("Item already added!");
     }
   };
 
