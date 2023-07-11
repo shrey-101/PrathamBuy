@@ -3155,6 +3155,62 @@
       },
       "status": "pending",
       "id": 12
+    },
+    {
+      "items": [
+        {
+          "title": "HP Pavilion 15-DK1056WM",
+          "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+          "price": 1099,
+          "discountPercentage": 6.18,
+          "rating": 4.43,
+          "stock": 89,
+          "brand": "HP Pavilion",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
+          "images": [
+            "https://i.dummyjson.com/data/products/10/1.jpg",
+            "https://i.dummyjson.com/data/products/10/2.jpg",
+            "https://i.dummyjson.com/data/products/10/3.jpg",
+            "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
+          ],
+          "productId": 10,
+          "quantity": 1,
+          "user": 2,
+          "id": 1
+        }
+      ],
+      "totalAmount": 1031,
+      "totalItems": 1,
+      "user": {
+        "email": "demo@gmail.com",
+        "password": "Qwerty123",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "Demo user",
+            "email": "demo@gmail.com",
+            "phone": "1234567788",
+            "street": "11th Main",
+            "city": "Mumbai",
+            "state": "Maharastra",
+            "pinCode": "220001"
+          }
+        ],
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Demo user",
+        "email": "demo@gmail.com",
+        "phone": "1234567788",
+        "street": "11th Main",
+        "city": "Mumbai",
+        "state": "Maharastra",
+        "pinCode": "220001"
+      },
+      "status": "pending",
+      "id": 13
     }
   ]
 }
