@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import NavBar from "../features/navbar/Navbar";
-import ProductList from "../features/product/productComponents/ProductList";
+import ProductList from "../features/product/components/ProductList";
 
 function Home() {
   return (

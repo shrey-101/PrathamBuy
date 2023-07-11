@@ -133,23 +133,24 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const dispatch = useDispatch(); //The useDispatch hook is used to access the Redux dispatch function. It allows you to dispatch actions to the Redux store.
-  const user = useSelector(selectLoggedInUser); //The useSelector hook is used to select and retrieve data from the Redux store. In this case, it is selecting the loggedInUser from the store using the selectLoggedInUser selector.
+  const dispatch = useDispatch();
+  const user = useSelector(selectLoggedInUser);
 
   useEffect(() => {
-    //The useEffect hook is utilized to handle side effects in the component. It runs a callback function when certain dependencies change.  In this code, it runs when the user object changes.
     if (user) {
-      //This checks if the user object exists or is truthy.
-      dispatch(fetchItemsByUserIdAsync(user.id)); //If the user object exists, the code dispatches an action called fetchItemsByUserIdAsync with the user.id as an argument. This action is likely defined elsewhere and is responsible for fetching items associated with the logged-in user.
+      dispatch(fetchItemsByUserIdAsync(user.id));
       dispatch(fetchLoggedInUserAsync(user.id));
     }
-  }, [dispatch, user]); // The dependencies array [dispatch, user] is provided to the useEffect hook, which means the effect will only re-run if either the dispatch function or the user object changes.
+  }, [dispatch, user]);
 
   return (
-    <div className="App">
-      <RouterProvider router={router} />
-    </div>
+    <>
+      <div className="App">
+        <RouterProvider router={router} />
+        {/* Link must be inside the Provider */}
+      </div>
+    </>
   );
-} // Overall, this code suggests that the component is responsible for rendering the main structure of the application and initiating an API call to fetch items based on the logged-in user when the user object is available.
+}
 
 export default App;
