@@ -60,7 +60,7 @@ export default function ProductDetail() {
       dispatch(addToCartAsync(newItem));
       alert.info("Item added to cart");
     } else {
-      alert.info("Item already added!");
+      alert.success("Item already added!");
     }
   };
 
