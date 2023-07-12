@@ -129,7 +129,7 @@ passport.deserializeUser(function (user, cb) {
 
 // This is your test secret API key.
 const stripe = require("stripe")(
-  "sk_test_51N5NLVSF2Mo4AGVvozBmb6d5td4kq0lexk43naVyOdmdzLoO4g8LLDsCFc7pT08pUjBesL0G95eP8Xv95kbOaRgU00qrTMpPnY"
+  "sk_test_51NT7miSHE5bZKwX2aYcf1AghJlqebRwhYu81g9xwK1R8aEP1bq9snLDcDRbZZgviWXxkJySt0IwuZKfvo0WISmJj00an2OvVRs"
 );
 
 server.post("/create-payment-intent", async (req, res) => {
@@ -154,7 +154,7 @@ server.post("/create-payment-intent", async (req, res) => {
 // TODO: we will capture actual order after deploying out server live on public URL
 
 const endpointSecret =
-  "whsec_0e1456a83b60b01b3133d4dbe06afa98f384c2837645c364ee0d5382f6fa3ca2";
+  "whsec_f94f81c80a63e8c27d318ff8d752a14588d3181496c3b3fef716a7292cd32dd0";
 
 server.post(
   "/webhook",
