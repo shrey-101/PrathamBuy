@@ -61,7 +61,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://prathanbuy.vercel.app/order-success/${currentOrder.id}`,
+        return_url: `https://prathanbuy-dgwcvsv7l-shrey-101.vercel.app/order-success/${currentOrder.id}`,
       },
     });
 
