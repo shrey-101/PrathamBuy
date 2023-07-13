@@ -406,7 +406,7 @@ function ProductGrid({ products, status }) {
             <Grid
               height="80"
               width="80"
-              color="rgb(79, 70, 229)"
+              color="rgb(79, 70, 229) "
               ariaLabel="grid-loading"
               radius="12.5"
               wrapperStyle={{}}
@@ -453,10 +453,10 @@ function ProductGrid({ products, status }) {
                 )}
                 {product.stock <= 0 && (
                   <div>
-                    <p className="text-sm text-red-400">Out of Stock</p>
+                    <p className="text-sm text-red-400">out of stock</p>
                   </div>
                 )}
-                {/* will not be needed when backend is implemented */}
+                {/* TODO: will not be needed when backend is implemented */}
               </div>
             </Link>
           ))}

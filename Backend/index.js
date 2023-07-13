@@ -23,6 +23,7 @@ const { User } = require("./model/User");
 const { isAuth, sanitizeUser, cookieExtractor } = require("./services/common");
 const path = require("path");
 const { Order } = require("./model/Order");
+
 // Webhook
 
 // TODO: we will capture actual order after deploying out server live on public URL
@@ -53,7 +54,7 @@ server.post(
         );
         order.paymentStatus = "received";
         await order.save();
-        // Then define and call a function to handle the event payment_intent.succeeded
+
         break;
       // ... handle other event types
       default:
@@ -111,6 +112,7 @@ passport.use(
     done
   ) {
     // by default passport uses username
+    console.log({ email, password });
     try {
       const user = await User.findOne({ email: email });
       console.log(email, password, user);
@@ -180,7 +182,7 @@ passport.deserializeUser(function (user, cb) {
 const stripe = require("stripe")(process.env.STRIPE_SERVER_KEY);
 
 server.post("/create-payment-intent", async (req, res) => {
-  const { totalAmount } = req.body;
+  const { totalAmount, orderId } = req.body;
 
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
@@ -188,6 +190,9 @@ server.post("/create-payment-intent", async (req, res) => {
     currency: "inr",
     automatic_payment_methods: {
       enabled: true,
+    },
+    metadata: {
+      orderId,
     },
   });
 
