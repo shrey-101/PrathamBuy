@@ -21,7 +21,8 @@ const cartRouter = require("./routes/Cart");
 const ordersRouter = require("./routes/Order");
 const { User } = require("./model/User");
 const { isAuth, sanitizeUser, cookieExtractor } = require("./services/common");
-
+const path = require("path");
+const { Order } = require("./model/Order");
 // Webhook
 
 // TODO: we will capture actual order after deploying out server live on public URL
@@ -31,7 +32,7 @@ const endpointSecret = process.env.ENDPOINT_SECRET;
 server.post(
   "/webhook",
   express.raw({ type: "application/json" }),
-  (request, response) => {
+  async (request, response) => {
     const sig = request.headers["stripe-signature"];
 
     let event;
@@ -47,7 +48,11 @@ server.post(
     switch (event.type) {
       case "payment_intent.succeeded":
         const paymentIntentSucceeded = event.data.object;
-        console.log({ paymentIntentSucceeded });
+        const order = await Order.findById(
+          paymentIntentSucceeded.metadata.orderId
+        );
+        order.paymentStatus = "received";
+        await order.save();
         // Then define and call a function to handle the event payment_intent.succeeded
         break;
       // ... handle other event types
@@ -68,7 +73,7 @@ opts.secretOrKey = process.env.JWT_SECRET_KEY; // TODO: should not be in code;
 
 //middlewares
 
-server.use(express.static("build"));
+server.use(express.static(path.resolve(__dirname, "build")));
 server.use(cookieParser());
 server.use(
   session({
@@ -92,6 +97,10 @@ server.use("/users", isAuth(), usersRouter.router);
 server.use("/auth", authRouter.router);
 server.use("/cart", isAuth(), cartRouter.router);
 server.use("/orders", isAuth(), ordersRouter.router);
+// this line we add to make react router work in case of other routes doesnt match
+server.get("*", (req, res) =>
+  res.sendFile(path.resolve("build", "index.html"))
+);
 
 // Passport Strategies
 passport.use(
